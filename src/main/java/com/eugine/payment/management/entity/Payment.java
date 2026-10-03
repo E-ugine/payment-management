@@ -11,6 +11,10 @@ public class Payment {
     private Status status;
     private String description;
 
+    // In order for packages outside entity to be able to read variables within the Payment class
+    // we use setter and getter access modifiers.
+    // We don't want outside packages to mutate payments fields without control
+
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
@@ -49,6 +53,25 @@ public class Payment {
 
     public String getDescription() {
         return description;
+    }
+
+    // no-args constructor.
+    // No parametrs or body.
+    //Used right when a  new payment is being created, before 'id' exists
+    // and before Spring/JPA has anything to populate.
+    // Every field would start out as null
+    public Payment() {
+
+    }
+
+    // all-args constructor.
+    //takes all fields and does assignemtn
+
+    public Payment(BigDecimal amount, String currency, Status status, String description) {
+        this.amount = amount;
+        this.currency = currency;
+        this.status = status;
+        this.description = description;
     }
 }
 

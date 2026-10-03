@@ -1,10 +1,13 @@
 package com.eugine.payment.management.entity;
 
 import java.math.BigDecimal;
-
 import com.eugine.payment.management.constants.Status;
+import  jakarta.persistence.*;
 
+@Entity  // tells Hibernate that this Java class corresponds to a database table
 public class Payment {
+    @Id // Informs Hibernate that this specific field is the PK.
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // "Automatically generate this field, doesn't come in with the rest of the fields"
     private Long id;
     private BigDecimal amount;
     private String currency;

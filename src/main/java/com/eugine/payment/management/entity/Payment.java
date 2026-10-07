@@ -3,15 +3,21 @@ package com.eugine.payment.management.entity;
 import java.math.BigDecimal;
 import com.eugine.payment.management.constants.Status;
 import  jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity  // tells Hibernate that this Java class corresponds to a database table
 public class Payment {
     @Id // Informs Hibernate that this specific field is the PK.
     @GeneratedValue(strategy = GenerationType.IDENTITY) // "Automatically generate this field, doesn't come in with the rest of the fields"
     private Long id;
+    @Positive
     private BigDecimal amount;
+    @NotBlank
     private String currency;
     private Status status;
+    @Size(max=100)
     private String description;
 
     // In order for packages outside entity to be able to read variables within the Payment class

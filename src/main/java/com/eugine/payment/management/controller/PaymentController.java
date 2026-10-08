@@ -2,6 +2,7 @@ package com.eugine.payment.management.controller;
 
 import com.eugine.payment.management.entity.Payment;
 import com.eugine.payment.management.service.PaymentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +15,7 @@ public class PaymentController {
     }
 
     @PostMapping
-    public Payment createPayment(@RequestBody Payment payment) {
+    public Payment createPayment(@Valid @RequestBody Payment payment) {
         return paymentService.createPayment(payment);
     }
 
